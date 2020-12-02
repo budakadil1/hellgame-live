@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,12 +144,14 @@ if use_s3 == 'False':
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
     )
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 elif use_s3 == 'True':
     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
     )
     STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
     AWS_ACCESS_KEY_ID = os.environ.get('S3_ACCESS_KEY')
     AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET_ACCESS_KEY')
