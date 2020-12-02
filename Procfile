@@ -1,1 +1,1 @@
-web: gunicorn hellgames.wsgi --log-file -
+web: gunicorn --pythonpath hellgames hellgames.wsgi --log-file -
