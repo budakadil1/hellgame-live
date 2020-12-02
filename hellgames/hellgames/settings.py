@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -137,7 +137,7 @@ LOGIN_URL = '/user/login/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-use_s3 = os.environ.get('USE_S3')
+use_s3 = os.environ['USE_S3']
 
 if use_s3 == 'False':
     STATIC_URL = '/static/'
@@ -153,8 +153,8 @@ elif use_s3 == 'True':
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-    AWS_ACCESS_KEY_ID = os.environ.get('S3_ACCESS_KEY')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET_ACCESS_KEY')
+    AWS_ACCESS_KEY_ID = os.environ['S3_ACCESS_KEY']
+    AWS_SECRET_ACCESS_KEY = os.environ['S3_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME = "hell-game-marketplace"
     AWS_S3_REGION_NAME = 'us-east-2' 
     AWS_S3_SIGNATURE_VERSION = 's3v4'
