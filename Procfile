@@ -1,0 +1,1 @@
+web: gunicorn hellgames.wsgi --log-file -
